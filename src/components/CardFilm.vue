@@ -1,6 +1,20 @@
 <template>
-    <div>
-        {{FilmCard.title}}
+    
+    <div id="my-film">
+        <img src="https://image.tmdb.org/t/p/w300/" alt="">
+        <div>
+            title: {{FilmCard.title}}
+        </div>
+        <div>
+            original-title: {{FilmCard.original_title}}
+        </div>
+        <div>
+            lang: {{FilmCard.original_language}}
+        </div>
+        <div>
+            vote: {{FilmCard.vote_average}}
+        </div>
+            
     </div>
 </template>
 
@@ -16,5 +30,8 @@ export default {
 
 
 <style scoped lang="scss">
-
+    #my-film{
+        flex-basis: 20%;
+        color: white;
+    }
 </style>
