@@ -21,11 +21,6 @@
 export default {
   name: 'MyHeader',
 
-  props : {
-    filmHeader : Array,
-    filmUser : String
-  },
-
   data(){
     return {
         userTxt : "",
