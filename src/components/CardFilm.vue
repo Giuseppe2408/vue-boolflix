@@ -1,7 +1,7 @@
 <template>
     
     <div id="my-film">
-        <img src="https://image.tmdb.org/t/p/w300/" alt="">
+        <img :src="'https://image.tmdb.org/t/p/w342/' + FilmCard.poster_path" alt="">
         <div>
             title: {{FilmCard.title}}
         </div>

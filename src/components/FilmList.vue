@@ -18,7 +18,6 @@ export default {
   },
   props : {
     film : Array,
-    filmListUser : String
   },
     
 }
@@ -34,7 +33,8 @@ export default {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        height: 100vh;
+        overflow-y: scroll;
+        height: calc(100vh - 100px);
     }
         
 </style>

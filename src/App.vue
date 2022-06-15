@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <MyHeader 
-    :filmHeader="film"
-    @mysearch="ricevoChiamata"
-    :filmUser="filmUser"/>
+    <Myheader 
+    
+    @mysearch="searchFilm"/>
     <main>
       <FilmList :film="film"
-      :filmListUser="filmUser"/>
+      />
     </main>
     
   
@@ -15,48 +14,59 @@
 
 <script>
 import axios from "axios"
-import MyHeader from './components/MyHeader.vue'
+import Myheader from './components/Myheader.vue'
 import FilmList from './components/FilmList.vue'
 
 export default {
   name: 'App',
   components: {
-    MyHeader,
+    Myheader,
     FilmList
   },
+
   data(){
         return {
-            apiUrl : "https://api.themoviedb.org/3/search/movie?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=en-US&query=movies&page=1&include_adult=false",
-            film: [],
-            filteredfilm : [],
-            filmUser : ""
+            apiUrl : [
+              "https://api.themoviedb.org/3/search/movie?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=it-EU&query=movie&page=1&include_adult=false",
+              
+            ],          
+            film: [], 
+                   
+            
         }
-    },
-    created(){
-        axios.get(this.apiUrl)
-        .then(apiresult => {
+  },
+
+  created(){
+    this.filmList()        
+  },
+
+  methods : {
+      filmList(){
+        if (this.userTxt !== "") {
+          let NewUrl = this.apiUrl + "&query=" + this.userTxt;
+          axios
+          .get(NewUrl)
+          .then(apiresult => {
             this.film = apiresult.data.results;
             console.log(apiresult);   
         })
         .catch((error)=>{
             console.log("Errore", error);
         })
-    },
-
-    methods : {
-      ricevoChiamata(searchText){
-        this.filmUser = searchText
+        }
       },
-      
 
-      filtroCard(){
-        this.filteredfilm = this.film.filter((element)=>{
-        return element.text.toLowerCase().includes(this.filmUser.toLowerCase()) 
-        })   
-        
+      searchFilm(userText){
+        this.userTxt = userText;
+        console.log(this.userTxt);
+        this.filmList()
+      }
     }
+            
+
+
 }
-}
+
 </script>
 
 <style lang="scss">

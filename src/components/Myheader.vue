@@ -6,9 +6,8 @@
         <span>{{filmUser}} </span>    
         <input 
         v-model="userTxt" 
-        @keyup.enter="$emit('mysearch', userTxt)"
         type="search">
-        <button>cerca</button>
+        <button @click="$emit('mysearch', userTxt)">cerca</button>
         
         
     </header>
@@ -28,17 +27,16 @@ export default {
 
   data(){
     return {
-        filteredfilm : "",
         userTxt : "",
     }
   },
-  
+
   methods : {
-    
+    console(){
+        console.log(this.userTxt);
+    }
   }
-  
-  
-  
+    
 }
 </script>
 
