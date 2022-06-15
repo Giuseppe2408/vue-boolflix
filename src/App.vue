@@ -42,19 +42,20 @@ export default {
             console.log("Errore", error);
         })
     },
+
     methods : {
       ricevoChiamata(searchText){
         this.filmUser = searchText
       },
-    
-    filtroCard(){
-        this.film = this.filteredfilm.filter((element)=>{
-        return element.text.toLowerCase().includes(this.filmUser.toLowerCase())
-        
-        })
+      
+
+      filtroCard(){
+        this.filteredfilm = this.film.filter((element)=>{
+        return element.text.toLowerCase().includes(this.filmUser.toLowerCase()) 
+        })   
+        console.log(filteredfilm);
     }
-  
-    }
+}
 }
 </script>
 

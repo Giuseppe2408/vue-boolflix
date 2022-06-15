@@ -28,10 +28,15 @@ export default {
 
   data(){
     return {
-        
+        filteredfilm : "",
         userTxt : "",
     }
   },
+  
+  methods : {
+    
+  }
+  
   
   
 }
