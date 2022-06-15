@@ -2,17 +2,17 @@
     
     <div id="my-film">
         <img :src="'https://image.tmdb.org/t/p/w342/' + FilmCard.poster_path" alt="">
-        <div>
+        <div class="none">
             title: {{FilmCard.title}}
         </div>
-        <div>
+        <div class="none">
             original-title: {{FilmCard.original_title}}
         </div>
-        <div>
+        <div class="none">
             <lang-flag :iso="FilmCard.original_language"/>
         </div>
-        <div>
-            vote: {{FilmCard.vote_average}}
+        <div class="none">
+            vote: <i class="fas fa-star"></i> {{FilmCard.vote_average}}
         </div>
             
     </div>
@@ -39,5 +39,16 @@ export default {
     #my-film{
         flex-basis: 20%;
         color: white;
+        i{
+            font-size: 40px;
+            color: white;
+        }
+        .none{
+            display: none;
+        }
+        &:hover .none{
+            display: block;
+            cursor: pointer;
+        }
     }
 </style>

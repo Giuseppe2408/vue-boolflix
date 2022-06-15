@@ -3,7 +3,7 @@
     <Myheader 
     @mysearch="searchFilm"/>
     <main>
-      <FilmList :film="film"
+      <FilmList :film="myNetflix"
       />
     </main>
     
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 import axios from "axios"
 import Myheader from './components/Myheader.vue'
 import FilmList from './components/FilmList.vue'
@@ -31,7 +32,7 @@ export default {
               "https://api.themoviedb.org/3/search/tv?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=it-EU&query=tv&page=1&include_adult=false"
               
             ],          
-            film: [],           
+            myNetflix: [],           
         }
   },
 
@@ -47,10 +48,10 @@ export default {
             axios
             .get(NewUrl)
             .then(apiresult => {
-              this.film = apiresult.data.results;
+              this.myNetflix = apiresult.data.results;
               console.log(apiresult);
-              console.log("film", this.film);
-              console.log("api", this.apiUrl[1]);
+              console.log("", this.myNetflix);
+             
           })
           .catch((error)=>{
             console.log("Errore", error);
