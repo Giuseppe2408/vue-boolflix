@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <MyHeader 
-    :filmHeader="filmHeader"
+    :filmHeader="film"
     @mysearch="ricevoChiamata"
     :filmUser="filmUser"/>
     <main>
-      <FilmList :film="film"/>
+      <FilmList :film="filteredfilm"
+      :filmListUser="filmUser"/>
     </main>
     
   
@@ -27,6 +28,7 @@ export default {
         return {
             apiUrl : "https://api.themoviedb.org/3/search/movie?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=en-US&query=movies&page=1&include_adult=false",
             film: [],
+            filteredfilm : [],
             filmUser : ""
         }
     },
@@ -43,7 +45,15 @@ export default {
     methods : {
       ricevoChiamata(searchText){
         this.filmUser = searchText
-      }
+      },
+    
+    filtroCard(){
+        this.film = this.filteredfilm.filter((element)=>{
+        return element.text.toLowerCase().includes(this.filmUser.toLowerCase())
+        
+        })
+    }
+  
     }
 }
 </script>

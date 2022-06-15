@@ -2,7 +2,8 @@
 
     <header>
 
-        <img src="https://media-assets.wired.it/photos/615ef4b55ccc3b73fb14d5b2/master/pass/wired_placeholder_dummy.png" alt="logo netflix">       
+        <img src="https://media-assets.wired.it/photos/615ef4b55ccc3b73fb14d5b2/master/pass/wired_placeholder_dummy.png" alt="logo netflix">  
+        <span>{{filmUser}} </span>    
         <input 
         v-model="userTxt" 
         @keyup.enter="$emit('mysearch', userTxt)"
@@ -21,24 +22,18 @@ export default {
   name: 'MyHeader',
 
   props : {
-    filmHeader : Object,
+    filmHeader : Array,
     filmUser : String
   },
 
   data(){
     return {
-        filteredfilm : [],
+        
         userTxt : "",
     }
   },
   
-  methods : {
-    filtroCard(){
-        this.film = this.filteredfilm.filter((element)=>{
-        return element.text.toLowerCase().includes(this.filmUser.toLowerCase())
-        })
-    }
-  }
+  
 }
 </script>
 
@@ -58,6 +53,9 @@ export default {
             margin-right: 80%;
         }
         
+        span {
+            color: white;
+        }
 
         input {
             height: 40px;
