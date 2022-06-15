@@ -5,7 +5,7 @@
     @mysearch="ricevoChiamata"
     :filmUser="filmUser"/>
     <main>
-      <FilmList :film="filteredfilm"
+      <FilmList :film="film"
       :filmListUser="filmUser"/>
     </main>
     
@@ -53,7 +53,7 @@ export default {
         this.filteredfilm = this.film.filter((element)=>{
         return element.text.toLowerCase().includes(this.filmUser.toLowerCase()) 
         })   
-        console.log(filteredfilm);
+        
     }
 }
 }

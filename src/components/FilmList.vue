@@ -1,7 +1,7 @@
 <template>
     <div id="film-list">
         <CardFilm
-        v-for="(card, i) in filteredfilm" 
+        v-for="(card, i) in film" 
         :key="i"
         :FilmCard="card"/> 
     </div>
