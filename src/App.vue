@@ -28,7 +28,7 @@ export default {
             apiUrl : [
 
               "https://api.themoviedb.org/3/search/movie?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=it-EU&query=movie&page=1&include_adult=false",
-              "https://api.themoviedb.org/3/search/tv?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=it_IT&query=scrubs"
+              "https://api.themoviedb.org/3/search/tv?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=it-EU&query=tv&page=1&include_adult=false"
               
             ],          
             film: [],           
@@ -43,15 +43,18 @@ export default {
       filmList(){
         for (let index = 0; index < this.apiUrl.length; index++) {
           if (this.userTxt !== "") {
-            let NewUrl = this.apiUrl + "&query=" + this.userTxt;
+            let NewUrl = this.apiUrl[index] + "&query=" + this.userTxt;
             axios
             .get(NewUrl)
             .then(apiresult => {
               this.film = apiresult.data.results;
-              console.log(apiresult);   
+              console.log(apiresult);
+              console.log("film", this.film);
+              console.log("api", this.apiUrl[1]);
           })
           .catch((error)=>{
             console.log("Errore", error);
+            
           })
           }
         }
