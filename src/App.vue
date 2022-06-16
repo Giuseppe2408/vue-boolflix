@@ -4,8 +4,7 @@
     @mysearch="searchFilm"/>
     <main>
       <FilmList 
-      :film="myNetflix"
-      :activeNum="activeindex"
+      :myNetflix="myNetflix"
       />
     </main>
     
@@ -35,7 +34,7 @@ export default {
               
             ],          
             myNetflix: [],
-            activeindex : 0           
+                      
         }
   },
 
@@ -62,7 +61,19 @@ export default {
           })
           }
         }
+        
+
+        for (let i = 0; i < this.apiUrl.length; i++) {
+            let defaultUrl = this.apiUrl
+            axios
+            .get(defaultUrl)
+            .then(apidefault => {
+              this.myNetflix = apidefault.data.results;
+              console.log(apidefault);
+              console.log(this.myNetflix)
+            }) 
           
+        }
       },
         
 

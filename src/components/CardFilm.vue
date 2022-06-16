@@ -1,27 +1,44 @@
 <template>
     
     <div id="my-film">
-        <img :src="'https://image.tmdb.org/t/p/w342/' + FilmCard.poster_path" alt="">
-        <div class="none">
-            title: {{FilmCard.title}}
-        </div>
-        <div class="none">
-            original-title: {{FilmCard.original_title}}
-        </div>
-        <div class="none">
-            <lang-flag :iso="FilmCard.original_language"/>
-        </div>
-        <div 
-        
-        class="none">
-            vote: 
-            <i class="yellow" v-for="index in Math.round(FilmCard.vote_average/2)"
-            :key="index"><font-awesome-icon 
-            icon="fa-solid fa-star" /></i>
-            <i v-for="i in 5 - Math.round(FilmCard.vote_average/2)"
-            :key="i" class="transparent"><font-awesome-icon icon="fa-solid fa-star"/></i>
+        <div class="position">
+            <div class="img">
+                <img :src="'https://image.tmdb.org/t/p/w342/' + FilmCard.poster_path" alt="">
+            </div>
+            
+                <div class="text">
+                    <div class="margin none">
+                    <h2>Title: </h2> 
+                    <span> {{FilmCard.title}}</span>
+                    <span> {{FilmCard.name}}</span>
+                </div>
+                <div class="margin none">
+                    <h2>Original-Title: </h2> 
+                    <span> {{FilmCard.original_title}}</span>
+                    <span> {{FilmCard.original_name}}</span>
+                </div>
+                <div class="margin none">
+                    <lang-flag :iso="FilmCard.original_language"/>
+                </div>
+
+                <div>
+                    <h2>Overview: </h2>
+                    <span> {{FilmCard.overview}}</span>
+                </div>
+
+                <div class="margin none">
+                    vote: 
+                    <i class="yellow" v-for="i in Math.round(FilmCard.vote_average/2)"
+                    :key="i"><font-awesome-icon 
+                    icon="fa-solid fa-star" /></i>
+                    <i v-for="i in 5 - Math.round(FilmCard.vote_average/2)"
+                    :key="'A' + i" class="white"><font-awesome-icon icon="fa-solid fa-star"/></i>
+                </div>
+            </div>
             
         </div>
+        
+        
             
     </div>
 </template>
@@ -37,7 +54,6 @@ export default {
 
   props : {
     FilmCard : Object,
-    activeindex : Number,
   },
 
   methods : {
@@ -52,29 +68,64 @@ export default {
     #my-film{
         flex-basis: 20%;
         color: white;
-        i{
-            font-size: 40px;
-            color: white;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &:hover img{
+            filter: brightness(30%);
         }
-        // .none{
-        //     display: none;
-        // }
-        // &:hover .none{
-        //     display: block;
-        //     cursor: pointer;
-        // }
-        span {
-            display: inline-block;
-        }
-        .fa-star {
-            font-size: 20px;
+
+        
+        .position{
+            position: relative;
+            
+            &:hover .text {
+                display: block;    
+            }
+            .text {
+                // float: left;
+                
+                margin: 0;
+                padding: 10px;
+                width: 90%;
+                height: 100%;
+                color: white;          
+                position: absolute;
+                left: 0;
+                top: 0;  
+                display: none;
+                
+                    h2{
+                        display: inline-block;
+                    }
+                    
+                    i{
+                    font-size: 40px;
+                    color: white;
+                    }
+                    span{
+                        font-size: 20px;
+                    }
+                    
+                    // font awesome
+                    .fa-star {
+                        font-size: 20px;
+                        
+                    }
+                    .yellow {
+                        color: yellow;
+                    }
+                    .white {
+                        color: white;          
+                    }
+                }
             
         }
-        .yellow {
-            color: yellow;
-        }
-        .transparent {
-            color: white;          
-        }
+        
+
+        
+        
+        
     }
 </style>

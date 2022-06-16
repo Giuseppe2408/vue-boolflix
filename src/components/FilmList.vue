@@ -1,7 +1,7 @@
 <template>
     <div id="film-list">
         <CardFilm
-        v-for="(card, i) in film" 
+        v-for="(card, i) in myNetflix" 
         :key="i"
         :FilmCard="card"/> 
     </div>
@@ -17,14 +17,8 @@ export default {
     CardFilm
   },
   props : {
-    film : Array,
-    activeNum : Number
-  },
-
-  
-
-  
-    
+    myNetflix : Array,
+  },    
 }
     
 </script>
