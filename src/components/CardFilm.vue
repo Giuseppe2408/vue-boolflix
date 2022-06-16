@@ -12,7 +12,7 @@
             <lang-flag :iso="FilmCard.original_language"/>
         </div>
         <div class="none">
-            vote:  {{Math.round(FilmCard.vote_average)/2}}
+            vote:  {{Math.round(FilmCard.vote_average/2)}}
         </div>
             
     </div>
