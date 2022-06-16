@@ -12,7 +12,7 @@
             <lang-flag :iso="FilmCard.original_language"/>
         </div>
         <div class="none">
-            vote: <i class="fas fa-star"></i> {{FilmCard.vote_average}}
+            vote:  {{Math.round(FilmCard.vote_average)/2}}
         </div>
             
     </div>
@@ -28,7 +28,12 @@ export default {
   },
 
   props : {
-    FilmCard : Object
+    FilmCard : Object,
+    activeindex : Number,
+  },
+
+  methods : {
+    
   }
   
 }

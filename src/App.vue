@@ -3,7 +3,9 @@
     <Myheader 
     @mysearch="searchFilm"/>
     <main>
-      <FilmList :film="myNetflix"
+      <FilmList 
+      :film="myNetflix"
+      :activeNum="activeindex"
       />
     </main>
     
@@ -32,7 +34,8 @@ export default {
               "https://api.themoviedb.org/3/search/tv?api_key=012e5b454b81c2bb2e5ad12bff9b77ee&language=it-EU&query=tv&page=1&include_adult=false"
               
             ],          
-            myNetflix: [],           
+            myNetflix: [],
+            activeindex : 0           
         }
   },
 
@@ -67,7 +70,10 @@ export default {
         this.userTxt = userText;
         console.log(this.userTxt);
         this.filmList()
-      }
+      },
+      
+     
+      
     }
             
 
@@ -77,6 +83,9 @@ export default {
 </script>
 
 <style lang="scss">
+  // $fa-font-path: "node_modules/@fortawesome/fontawesome-free/WebFonts" !default;
+  // @import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+  // @import "node_modules/@fortawesome/fontawesome-free/scss/regular";
   *{
     margin: 0;
     padding: 0;

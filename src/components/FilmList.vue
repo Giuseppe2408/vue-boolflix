@@ -18,7 +18,12 @@ export default {
   },
   props : {
     film : Array,
+    activeNum : Number
   },
+
+  
+
+  
     
 }
     
