@@ -64,7 +64,7 @@ export default {
         
 
         for (let i = 0; i < this.apiUrl.length; i++) {
-            let defaultUrl = this.apiUrl
+            let defaultUrl = this.apiUrl[i]
             axios
             .get(defaultUrl)
             .then(apidefault => {
