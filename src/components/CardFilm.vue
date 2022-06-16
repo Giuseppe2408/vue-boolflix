@@ -11,8 +11,10 @@
         <div class="none">
             <lang-flag :iso="FilmCard.original_language"/>
         </div>
-        <div class="none">
-            vote:  {{Math.round(FilmCard.vote_average/2)}}
+        <div 
+        
+        class="none">
+            vote: <span :class="Math.round(FilmCard.vote_average/2) === Number ? '' : 'star'"></span> 
         </div>
             
     </div>
@@ -48,12 +50,20 @@ export default {
             font-size: 40px;
             color: white;
         }
-        .none{
-            display: none;
+        // .none{
+        //     display: none;
+        // }
+        // &:hover .none{
+        //     display: block;
+        //     cursor: pointer;
+        // }
+        span {
+            display: inline-block;
         }
-        &:hover .none{
-            display: block;
-            cursor: pointer;
+        .star {
+            background-color: red;
+            height: 20px;
+            width: 30px;
         }
     }
 </style>
