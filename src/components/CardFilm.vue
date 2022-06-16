@@ -14,7 +14,13 @@
         <div 
         
         class="none">
-            vote: <span :class="Math.round(FilmCard.vote_average/2) === Number ? '' : 'star'"></span> 
+            vote: 
+            <i class="yellow" v-for="index in Math.round(FilmCard.vote_average/2)"
+            :key="index"><font-awesome-icon 
+            icon="fa-solid fa-star" /></i>
+            <i v-for="i in 5 - Math.round(FilmCard.vote_average/2)"
+            :key="i" class="transparent"><font-awesome-icon icon="fa-solid fa-star"/></i>
+            
         </div>
             
     </div>
@@ -60,10 +66,15 @@ export default {
         span {
             display: inline-block;
         }
-        .star {
-            background-color: red;
-            height: 20px;
-            width: 30px;
+        .fa-star {
+            font-size: 20px;
+            
+        }
+        .yellow {
+            color: yellow;
+        }
+        .transparent {
+            color: white;          
         }
     }
 </style>
